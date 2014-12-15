@@ -1,0 +1,41 @@
+* Introduction
+
+  Simple example of using clang static code analysis just to remember.
+
+  Clang/LLVM is capable of doing static code analysis and producing an
+  interactive HTML report of the results.
+
+  build.sh configures a CMake build using the static analyzer, builds
+  the code and views the resulting report in browser.
+
+* Links
+
+  Using Clang Analyzer with CMake:
+  http://redmine.lighttpd.net/projects/lighttpd2/wiki/ClangAnalyzer
+
+  Jenkins Clang Scan Build plugin:
+  https://wiki.jenkins-ci.org/display/JENKINS/Clang+Scan-Build+Plugin
+
+  scan-build: running the analyzer from the command line
+  http://clang-analyzer.llvm.org/scan-build.html
+
+
+* Tools
+
+** scan-build
+
+   "scan-build make" overrides CC, runs static code analysis, looks
+   into source files and produces a report. The project should be
+   built with debug configuration.
+
+   Examples:
+
+   scan-build make -j4
+
+   scan-build gcc -c t1.c t2.c
+
+   Parameters:
+   | -o             | HTML report output directory                   |
+   | -v             | verbose                                        |
+   | -V             | View the report in default browser after build |
+   | --use-analyzer | "Xcode" or path to clang executable            |
